@@ -2,21 +2,25 @@
 
 echo "Iniciando instalação do servidor WEB..."
 echo "Iniciando atualizações do sistema..."
-apt update
-apt upgrade -y
+apt-get update
+apt-get upgrade -y
 
 echo "Instalando servidor apache..."
 
-apt install apache2 -y
+apt-get install apache2 -y
 
 echo "Instalando unzip..."
 
-apt install unzip -y
+apt-get install unzip -y
 
 echo "Baixando aplicação WEB..."
-
-wget -P /tmp https://github.com/denilsonbonatti/linux-site-dio/archive/refs/heads/main.zip
+cd /tmp
+wget https://github.com/denilsonbonatti/linux-site-dio/archive/refs/heads/main.zip
 
 echo "Inserindo aplicação..."
 
-unzip /tmp/main
+unzip main.zip
+cd linux-site-dio
+cp -R * /var/www/html/
+
+echo "Finalizado!!!"
